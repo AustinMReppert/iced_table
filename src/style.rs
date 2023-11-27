@@ -60,6 +60,7 @@ impl StyleSheet for iced_style::Theme {
 
 pub(crate) mod wrapper {
     use iced_core::{mouse::Cursor, Color, Element, Widget};
+    use iced_core::widget::Tree;
     use iced_widget::container;
 
     use super::StyleSheet;
@@ -165,10 +166,11 @@ pub(crate) mod wrapper {
 
         fn layout(
             &self,
+            tree: &mut Tree,
             renderer: &Renderer,
             limits: &iced_core::layout::Limits,
         ) -> iced_core::layout::Node {
-            self.content.as_widget().layout(renderer, limits)
+            self.content.as_widget().layout(tree, renderer, limits)
         }
 
         fn draw(

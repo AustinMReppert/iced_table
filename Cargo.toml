@@ -9,14 +9,14 @@ repository = "https://github.com/tarkah/iced_table"
 
 [workspace]
 default-members = [
-  "./example"
+    "./example"
 ]
 members = [
-  ".",
-  "./example",
+    ".",
+    "./example",
 ]
 
 [dependencies]
-iced_core = "0.10"
-iced_style = "0.9"
-iced_widget = "0.1"
+iced_core = { git = "https://github.com/iced-rs/iced", rev = "7dd32f3be43c72e11dac5e07918e9ad6d36b6555" }
+iced_style = { git = "https://github.com/iced-rs/iced", rev = "7dd32f3be43c72e11dac5e07918e9ad6d36b6555" }
+iced_widget = { git = "https://github.com/iced-rs/iced", rev = "7dd32f3be43c72e11dac5e07918e9ad6d36b6555" }

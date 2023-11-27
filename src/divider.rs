@@ -1,6 +1,6 @@
 use iced_core::layout::{self, Layout};
 use iced_core::mouse::Cursor;
-use iced_core::widget::{self, Widget};
+use iced_core::widget::{self, Tree, Widget};
 use iced_core::{event, mouse, overlay, Color, Element, Length, Point, Rectangle};
 use iced_core::{renderer, Clipboard, Shell};
 
@@ -100,7 +100,7 @@ where
         self.content.as_widget().height()
     }
 
-    fn layout(&self, renderer: &Renderer, limits: &layout::Limits) -> layout::Node {
+    fn layout(&self, tree: &mut Tree, renderer: &Renderer, limits: &layout::Limits) -> layout::Node {
         let padding = [0.0, self.width, 0.0, 0.0].into();
 
         let limits = limits
@@ -108,7 +108,7 @@ where
             .height(Length::Shrink)
             .pad(padding);
 
-        let content = self.content.as_widget().layout(renderer, &limits);
+        let content = self.content.as_widget().layout(&mut tree.children[0], renderer, &limits);
 
         layout::Node::with_children(content.size().pad(padding), vec![content])
     }
